@@ -21,7 +21,7 @@ int main(int argv, char **args)
 	}
 	else{
 		input_file = "dataset.txt";
-		string query_file = "queries.txt";
+		query_file = "queries.txt";
 	} 
 	Input input(input_file); 
 	time_t after_input;
@@ -49,12 +49,12 @@ int main(int argv, char **args)
 				dataname = dataname + line[i];
 				i++;
 			}
-			while(line[i] = ' '){
+			while(line[i] == ' '){
 				i++;
 			}
 			
 			string bound_str = "";
-			while(line[i] != '\n'&&line[i]!='\0'){
+			while(line[i] != '\n'&&line[i]!='\0'&&' '){
 				bound_str = bound_str + line[i];
 				i++;
 			}
