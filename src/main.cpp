@@ -9,18 +9,21 @@ using namespace std;
 int main(int argv, char **args)
 {	time_t before_input;
 	time(&before_input);
+	string query_file;
+	string input_file;
 	if(argv==3){
-		string query_file = args[2];
-		Input input(args[1]);
+		query_file = args[2];
+		input_file = args[1];
 	}
 	else if(argv > 3 || argv == 2){
 		cout<<"Error Argument. Please view Readme.\n";
 		return 0;
 	}
 	else{
-		Input input();
+		input_file = "dataset.txt";
 		string query_file = "queries.txt";
 	} 
+	Input input(input_file); 
 	time_t after_input;
 	time(&after_input); 
 	double seconds_i = difftime(after_input,before_input);

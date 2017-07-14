@@ -47,7 +47,7 @@ class Query{
 			bound=b;
 			dataname=dn;
 			output=0;
-			if(tra_list -> find(dataname)==tra_list.end()){
+			if(tra_list -> find(dataname)==tra_lis->end()){
 				cout<<"Error query. No such trajectory."<<dataname<<"\n";
 				state = false;
 			}
@@ -95,12 +95,12 @@ class Query{
 				int k=0;
 				while(k < result_data.size()){
 					Trajectory<double>* tra_input=tra_list->find(result_data[k])->second;
-					if(tra_input==tra_tra_queried){
+					if(tra_input==tra_queried){
 						continue;
 					}
 					int input_size = tra_input->get_size();
 					double max_distance = max(tra_input->get_max_distance(),tra_queried->get_max_distance());
-					double new_bound = bound + max_distance_sq;
+					double new_bound = bound + max_distance;
 					int l=0;
 					while(l<5){
 						l++;
