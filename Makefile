@@ -1,16 +1,18 @@
 CXX           = g++
 CXXFLAGS      = -std=c++11 $(DEFINES) 
+SOURCE=./src/
 
-all: main.o
-	g++ -Ofast -march=native -std=c++11  -o giscup main.o -Wall
+all: $(SOURCE)main.o
+	g++ -Ofast -march=native -std=c++11  -o giscup $(SOURCE)main.o -Wall
 
-main.o: main.cpp freespace.h \
-		trajectory.h \
-		point.h \
-		cell.h \
-		input.h \
-		RTree.h \
-		query.h
+main.o: $(SOURCE)main.cpp $(SOURCE)freespace.h \
+		$(SOURCE)trajectory.h \
+		$(SOURCE)point.h \
+		$(SOURCE)cell.h \
+		$(SOURCE)input.h \
+		$(SOURCE)RTree.h \
+		$(SOURCE)query.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 clean:
-	$(RM) *.o $(objects) run
+	$(RM) *.o $(objects) giscup
+	(cd src ; $(RM) *.o)
