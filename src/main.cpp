@@ -31,7 +31,7 @@ int main(int argv, char **args)
 	map <string, Trajectory<double> *> * dataset=input.get_dataset();
 	RTree<string, double, 4, double>* se_tree=input.get_se_tree();
 	bool query_state = true;
-	fstream q;
+	ifstream q;
 	time_t before_query;
 	time(&before_query);
 	q.open(query_file.c_str());

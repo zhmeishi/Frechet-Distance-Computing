@@ -47,7 +47,7 @@ class Query{
 			bound=b;
 			dataname=dn;
 			output=0;
-			if(tra_list -> find(dataname)==tra_lis->end()){
+			if(tra_list -> find(dataname)==tra_list->end()){
 				cout<<"Error query. No such trajectory."<<dataname<<"\n";
 				state = false;
 			}
