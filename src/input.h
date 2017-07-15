@@ -66,6 +66,8 @@ class Input{
 			ifstream f;
 			f.open(filename.c_str());
 			if(f.is_open()){
+				time_t before_input;
+				time(&before_input);
 				int d=0;
 				while(!f.eof()){
 					string dataname;
@@ -132,6 +134,10 @@ class Input{
 					d++;
 				}
 				f.close();
+				time_t after_input;
+				time(&after_input); 
+				double seconds_i = difftime(after_input,before_input);
+				printf ("%.f seconds for load data.\n", seconds_i);
 			}
 			else{
 				state = false;

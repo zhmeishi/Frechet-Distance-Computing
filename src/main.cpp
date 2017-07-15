@@ -7,8 +7,7 @@
 using namespace std;
 
 int main(int argv, char **args)
-{	time_t before_input;
-	time(&before_input);
+{
 	string query_file;
 	string input_file;
 	if(argv==3){
@@ -24,10 +23,6 @@ int main(int argv, char **args)
 		query_file = "queries.txt";
 	} 
 	Input input(input_file); 
-	time_t after_input;
-	time(&after_input); 
-	double seconds_i = difftime(after_input,before_input);
-	printf ("%.f seconds for load data.\n", seconds_i);
 	map <string, Trajectory<double> *> * dataset=input.get_dataset();
 	RTree<string, double, 4, double>* se_tree=input.get_se_tree();
 	bool query_state = true;
@@ -67,7 +62,7 @@ int main(int argv, char **args)
 		time_t after_query;
 		time(&after_query); 
 		double seconds_q = difftime(after_query,before_query);
-		printf ("%.f seconds for load data.\n", seconds_q);
+		printf ("%.f seconds for query.\n", seconds_q);
 	}
 	else{
 		//query_state = false;
