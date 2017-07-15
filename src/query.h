@@ -24,7 +24,7 @@ bool MySearchCallback2(string id, void* arg)
 	return false; // keep going
 }
 class Query{
-	private:
+	private: 
 		map<string, Trajectory<double> *> * tra_list;
 		string dataname;
 		double bound;
