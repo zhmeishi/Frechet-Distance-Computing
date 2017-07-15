@@ -4,7 +4,15 @@
 #include <ctime>
 #include "input.h"
 #include "query.h"
+#include <vector>
+# include <omp.h>
+# include <thread>
+
 using namespace std;
+struct query_node{
+string dataname;
+double bound;
+};
 
 int main(int argv, char **args)
 {
@@ -30,6 +38,7 @@ int main(int argv, char **args)
 	time_t before_query;
 	time(&before_query);
 	q.open(query_file.c_str());
+	vector<query_node> query_list;
 	if(q.is_open()){
 		while(!q.eof()){
 			string line;
@@ -54,20 +63,38 @@ int main(int argv, char **args)
 				i++;
 			}
 			bound = std::stod(bound_str);
+			struct query_node node = {.dataname=dataname, .bound=bound};
+			query_list.push_back(node);
 			//cout<<bound<<'\n';
 			//parallel
-			Query query(dataset, dataname, bound, se_tree);
 		}
 		q.close();
-		time_t after_query;
-		time(&after_query); 
-		double seconds_q = difftime(after_query,before_query);
-		printf ("%.f seconds for query.\n", seconds_q);
 	}
 	else{
 		//query_state = false;
 		cout<<"Error opening query file.\n";
+		return 0;
 	}
+	int k;
+	unsigned cpucore = std::thread::hardware_concurrency();
+	if (cpucore==0){
+		cpucore=32;
+		printf ("Core number not find, use 32 as Threads number.\n");
+	}
+	else{
+		printf ("Find %d Core. Use %d as Threads number.\n",cpucore,cpucore);
+	}
+	#pragma omp parallel shared(dataset,query_list,se_tree,chunk) private(k)
+	{
+		#pragma omp for schedule(guided) nowait num_threads(cpucore)
+		for(k=0;k<query_list.size();k++) {
+			Query query(dataset, query_list[k].dataname, query_list[k].bound, se_tree);
+		}
+	}
+	time_t after_query;
+	time(&after_query); 
+	double seconds_q = difftime(after_query,before_query);
+	printf ("%.f seconds for query.\n", seconds_q);
 	return 0;
 }
 
