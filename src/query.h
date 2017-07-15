@@ -96,6 +96,7 @@ class Query{
 				while(k < result_data.size()){
 					Trajectory<double>* tra_input=tra_list->find(result_data[k])->second;
 					if(tra_input==tra_queried){
+						k++;
 						continue;
 					}
 					int input_size = tra_input->get_size();
