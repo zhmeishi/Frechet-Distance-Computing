@@ -5,7 +5,6 @@
 #include "trajectory.h"
 #include <string>
 #include <iostream>
-#include <fstream>
 #include <cmath>
 #include "freespace.h"
 

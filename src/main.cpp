@@ -78,8 +78,8 @@ int main(int argv, char **args)
 	int k;
 	unsigned cpucore = std::thread::hardware_concurrency();
 	if (cpucore==0){
-		cpucore=32;
-		printf ("Core number not find, use 32 as Threads number.\n");
+		cpucore=16;
+		printf ("Core number not find, use 16 as Threads number.\n");
 	}
 	else{
 		printf ("Find %d Core. Use %d as Threads number.\n",cpucore,cpucore);

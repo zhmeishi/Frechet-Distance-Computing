@@ -129,7 +129,7 @@ class Input{
 						se_tree.Insert(spoint,spoint,dataname);
 					}
 					else{
-						cout<<"Error open"<<dataname<<"\n";
+						cout<<"Error open "<<dataname<<"\n";
 					}
 					d++;
 				}
