@@ -2,16 +2,14 @@ This is code submmitted in ACM SIGSPATIAL Cup 2017
 You can find more details how to use it here:
 http://sigspatial2017.sigspatial.org/giscup2017/home
 
-How to compile the program ?
-----------------------------
+# How to compile the program ?
 
 Type
 $make 
 in command line is enough.
 
 
-How to run the program ?
-------------------------
+# How to run the program ?
 
 Copy the exe file named "giscup" into a folder with dataset file, queries file and all data files.
 
