@@ -14,7 +14,11 @@ in command line is enough.
 Copy the exe file named "giscup" into a folder with dataset file, queries file and all data files.
 
 To run the program
+
 $./giscup your_dataset.txt your_queries.txt
+
 or
+
 $./giscup
+
 with default dataset file named "dataset.txt" and default  queries file named "queries.txt".
