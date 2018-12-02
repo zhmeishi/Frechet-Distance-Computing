@@ -5,7 +5,9 @@ http://sigspatial2017.sigspatial.org/giscup2017/home
 # How to compile the program ?
 
 Type
+
 $make 
+
 in command line is enough.
 
 
